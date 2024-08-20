@@ -41,6 +41,7 @@ This project is a fully functional blogging platform where users can register, l
   
 ## Tools ⚙️
 + **Postman**
++ **Nodemon**
 + **Git & Github**
 + **VsCode**
 + **Chrome**

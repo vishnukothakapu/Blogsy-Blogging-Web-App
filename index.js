@@ -84,6 +84,13 @@ app.get(
 );
 // Home route
 app.get("/", async (req, res) => {
+  if (req.isAuthenticated()) {
+    req.user = req.user;
+    
+  }
+  else {
+    req.user = null;
+  }
   try {
     const search = req.query.search || "";
     const latestBlog = await Blog.find({}).sort({ likes: -1 }).populate("author").limit(1);
@@ -519,7 +526,7 @@ app.post("/like/:id", async (req, res) => {
         blog.likes.push(req.user._id);
       }
       await blog.save();
-      res.render('blog');
+      res.redirect('/blog/'+req.params.id);
     } catch (err) {
       console.log("Error:", err.message);
       res.status(500).send("Error updating likes");

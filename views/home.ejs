@@ -9,7 +9,12 @@
           <h2 class="blog-header"><%= blog.title %></h2>
           <img src="uploads/<%= blog.image %>" alt="<%= blog.title %>" class="blog-image"/>
           <p class="blog-content"><%= blog.content && blog.content.substring(0, 100) %>...   <a href="/blog/<%= blog._id %>" class="read-more">read more</a></p>
-          <p class="blog-author">Author: <%= blog.author.name %></p>
+          <p class="blog-author">
+            Author: <%= blog.author.name %> 
+            <% if (blog.author._id.toString() === user._id.toString()) { %>
+              <span class="author-tag">Author</span>
+            <% } %>
+          </p>
           <p class="blog-date">Posted on: <%= blog.createdAt.toLocaleDateString() %></p>
           <div class="blog-footer">
            <p class="blog-likes">Likes: <%= blog.likes.length %></p>

@@ -39,7 +39,7 @@
     <%}%>
   </div>
 <form action="/comment/<%= blog._id %>" method="post" class="addCommentSection-form">
-      <input type="text" name="text" placeholder="Add a comment">
+      <input type="text" name="text" placeholder="Add a comment" required>
       <button type="submit">Comment</button>
     </form>
 </div>
@@ -64,7 +64,7 @@
           </div>
          
           <form action="/reply/<%= blog._id %>/<%= comment._id %>" method="post" class="replyCommentForm">
-            <input type="text" name="text" placeholder="Reply to this comment">
+            <input type="text" name="text" placeholder="Reply to this comment" required>
             <button type="submit">Reply</button>
           </form>
           <ul class="replyText">

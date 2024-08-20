@@ -1,0 +1,41 @@
+<%- include('partials/Header',{user:null,search:null}) %>
+<div class="registerContainer">
+  <% if(message!==null) {%>
+        <span class="bg-<%=color%> message"><%=message%></span>
+        <% }%>
+    <form method="post" action="/register" enctype="multipart/form-data" class="registerForm">
+         <h1>Register</h1>  
+         <div class="input-container">
+            <i class="ri-user-line"></i>
+ <input type="text" name="name" placeholder="Full Name"/>
+        
+         </div>
+       <div class="input-container">
+        <i class="ri-mail-line"></i>
+  <input type="email" name="username" placeholder="Email Address"/>
+       </div>
+    
+        <div class="input-container">
+  <label for="file-upload" class="custom-file-upload">
+    <i class="ri-file-upload-line"></i> Upload Image
+  </label>
+  <input id="file-upload" type="file" name="image" title="Upload image" required/>
+</div>
+
+        <button type="submit" id="registerBtn">Register</button>
+         <span class="loginLink">Already have an account? <a href='/login'>Login</a></span>
+         <span class="text-social">Or sign in with</span>
+
+<div class="googleContainer">
+    <i class="ri-google-fill"></i>
+    <button id="googleBtn"><a href='/auth/google'>Sign in with google</a></button>
+</div>
+<div class="githubContainer">
+    <i class="ri-github-fill"></i>
+    <button id="githubBtn"><a href='/auth/github'>Sign in with github</a></button>
+</div>
+
+    </form>
+   
+</div>
+<%- include('partials/Footer') %>

@@ -1,0 +1,41 @@
+<%- include('partials/Header',{user:user,search:null}) %>
+<div class="registerContainer">
+   <% if(message!==null) {%>
+        <span class="bg-<%=color%> message"><%=message%></span>
+        <% }%>
+  <form
+    action="/post-blog"
+    method="post"
+    enctype="multipart/form-data"
+    class="registerForm"
+  >
+    <h2 class="postBlog-title">Post a Blog</h2>
+    <div class="input-container">
+      <i class="ri-edit-line"></i>
+      <input type="text" id="title" name="title" placeholder="Title" required />
+    </div>
+    <div class="input-container">
+      <i class="ri-article-line"></i>
+      <textarea
+
+      id="content"
+      name="content"
+      placeholder="Content "
+      required
+      ></textarea>
+    </div>
+    <div class="input-container">
+   <i class="ri-edit-line"></i>
+      <input type="text" id="tags" name="tags" placeholder="Tags (Seperated by commas)" required/>
+    </div>
+      <p class="tip"><i class="ri-lightbulb-flash-line"></i> <span>More Tags = More Reach</span></p>
+      <div class="input-container">
+  <label for="file-upload" class="custom-file-upload">
+    <i class="ri-file-upload-line"></i> Upload Image
+  </label>
+  <input id="file-upload" type="file" name="image" title="Upload image" required/>
+</div>
+    <button type="submit" class="post-blogBtn">Post Blog</button>
+  </form>
+</div>
+<%- include('partials/Footer') %>

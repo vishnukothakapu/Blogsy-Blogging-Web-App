@@ -1,0 +1,57 @@
+<%- include('partials/Header', {user: user,search:null }) %>
+<div class="dashboard-container">
+    <div class="dashboard-headers">
+        <% if(message!==null) {%>
+            <span class="bg-<%=color%> message"><%=message%></span>
+            <% }%>
+        <h2>Your Posts</h2>
+        <button class="postBlogBtn">
+            <i class="ri-pencil-line"></i>
+            <a href="/post-blog" class="postBlogLink">Post a Blog</a></button>
+    </div>
+    <div class="blog-container">
+        <% if (user.posts.length > 0) { %>
+            
+            <% user.posts.forEach((blog, index) => { %>
+                
+                
+                <div class="blog-post">
+          <h2 class="blog-header"><a href="/blog/<%= blog._id %>"><%= blog.title %></a></h2>
+          <img src="uploads/<%= blog.image %>" alt="<%= blog.title %>" class="blog-image"/>
+          <p class="blog-content"><%= blog.content && blog.content.substring(0, 100) %>...   <a href="/blog/<%= blog._id %>" class="read-more">read more</a></p>
+          <br>
+          <p class="blog-date">Posted on: <%= blog.createdAt.toLocaleDateString() %></p>
+          <div class="blog-footer">
+           <p class="blog-likes">Likes: <%= blog.likes.length %></p>
+          <div class="blog-buttons">
+            <form action="/like/<%= blog._id %>" method="post">
+              <button type="submit">
+                <% if (blog.likes.includes(user ? user._id : '')) { %>
+                 <i class="ri-heart-fill" title="unlike"></i>
+                <% } else { %>
+                 <i class="ri-heart-line" title="like"></i>
+                <% } %>
+              </button>  
+          </div>
+        </div>
+        <div class="buttons-footer">
+           <button class="viewBtn" title="View Blog">
+            <i class="ri-timeline-view"></i>
+               <a href="/blog/<%= blog._id %>">View</a>
+           </button>
+           <button class="editBlog-btn" title="Edit Blog">
+                <i class="ri-pencil-line"></i>
+               <a href="/blog/edit/<%= blog._id %>">Edit</a>
+           </button>
+        </div>
+            </form>
+          
+        </div>
+                    <% }) %>
+            
+            <% } else { %>
+                <p>You haven't posted anything yet.</p>
+            <% } %>
+        </div>
+    </div>
+<%- include('partials/Footer') %>

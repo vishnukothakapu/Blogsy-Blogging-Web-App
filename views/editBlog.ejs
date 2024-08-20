@@ -1,0 +1,42 @@
+<%- include('partials/Header',{user:user||null,search:null}) %>
+<div class="registerContainer">
+  <form action="/blog/edit/<%= blog._id %>" method="post" enctype="multipart/form-data" class="editBlogForm" id="editBlog">
+    <h2 class="">Edit Blog Post</h2>
+    <div class="blogImage-container">
+      <label for="blogImage">
+ <% if (blog.image) { %>
+        <img src="/uploads/<%= blog.image %>" class="blogImage" width="200" height="200" alt="<%= blog.title %>"/>
+      <% } %>
+      </label>
+      <input id="blogImage" type="file" name="image" title="Upload image"/>
+    </div>
+     
+    <div class="input-container">
+        <i class="ri-edit-line"></i>
+      <input type="text" id="title" name="title" value="<%= blog.title %>"/>
+    </div>
+   <div class="input-container">
+      <i class="ri-article-line"></i>
+      <textarea
+
+      id="content"
+      name="content"
+     title="blog content"
+      required
+      ><%=blog.content%></textarea>
+</div>
+     <div class="input-container">
+      <i class="ri-edit-line"></i>
+      <input type="text" id="tags" name="tags" value="<%= blog.tags.join(', ') %>">
+    </div>
+    <div class="buttons">
+ <button type="submit" class="submitBtn">Save Changes</button>
+
+ <button class="deleteBtn"><a href="/blog/delete/<%=blog._id%>">Delete Post</a></button>
+ </div>
+  </form>
+  
+    
+</div>
+
+<%- include('partials/Footer') %>

@@ -1,0 +1,102 @@
+<%- include('partials/Header',{user:user,search:search}) %>
+<div class="container blogPost-container">
+  <div class="blog-post">
+    <h2 class="blogPost-title"><%= blog.title %></h2>
+    <img class="blogPost-image" src="/uploads/<%= blog.image %>" width="200" height="200" alt="<%= blog.title %>"/>
+    <p class="blogPost-content"><%= blog.content %></p>
+    <div class="blogPost-footer">
+      <div class="blogPost-details">
+  <p class="blogPost-date">Posted on: <%= blog.createdAt.toLocaleDateString() %></p>
+       <p class="blogPost-author">Author: <%=blog.author.name %>
+      <% if (user && user._id.toString() === blog.author._id.toString()) { %>
+        <span class="blogPost-author-tag">(You)</span>
+      <% } %>
+      </>
+      </div>
+    <div class="blog-buttons">
+
+    <form action="/like/<%= blog._id %>" method="post">
+      <button type="submit" class="">
+        <% if (user && blog.likes.includes(user._id)) { %>
+        <i class="ri-heart-fill" title="unlike"></i>
+        <p class="blogPost-likes"><%= blog.likes.length %></p>
+        <% } else { %>
+          <i class="ri-heart-line" title="like"></i>
+          <p class="blogPost-likes"><%= blog.likes.length %></p>
+        <% } %>
+      </button>
+    </form>
+    </div>
+    </div>
+   
+<div class="blogPost-commentSection">
+<h3 class="blogPost-commentHeader">Comments</h3>
+<hr>
+<div class="blogPost-addCommentSection">
+  <div class="addComment-profile">
+    <%if (user && user.image) { %>
+    <img src="/uploads/<%= user.image %>" alt="<%= user.name %>" class="addComment"/>
+    <%}%>
+  </div>
+<form action="/comment/<%= blog._id %>" method="post" class="addCommentSection-form">
+      <input type="text" name="text" placeholder="Add a comment">
+      <button type="submit">Comment</button>
+    </form>
+</div>
+
+    <ul>  
+      <% blog.comments.forEach(comment => { %>
+        <li>
+          <div class="commentsImage addComment-profile">
+            <img src="/uploads/<%= comment.author.image %>" alt="<%= comment.author.name %>" class="commentImage"/>
+          <div class="commentDescription">
+              <h4>
+              <%= comment.author.name %>  <% if (blog.author._id.toString() === comment.author._id.toString()) { %>
+              <span class="author-tag">Author</span>
+            <% } %>
+            </h4>
+            
+            <p class="commentText">
+             <%= comment.text %>
+            
+           </p>
+          </div>
+          </div>
+         
+          <form action="/reply/<%= blog._id %>/<%= comment._id %>" method="post" class="replyCommentForm">
+            <input type="text" name="text" placeholder="Reply to this comment">
+            <button type="submit">Reply</button>
+          </form>
+          <ul class="replyText">
+            <% comment.replies.forEach(reply => { %>
+              <li>
+                <div class="commentsImage addComment-profile replySection">
+            <img src="/uploads/<%= reply.author.image %>" alt="<%= reply.author.name %>" class="commentImage"/>
+          <div class="commentDescription">
+              <h4>
+              <%= reply.author.name %>  <% if (blog.author._id.toString() === reply.author._id.toString()) { %>
+              <span class="author-tag">Author</span>
+            <% } %>
+            </h4>
+            
+            <p class="replyCommentText">
+            <span class="replyComment"><%=comment.author.name%></span>
+             <%= reply.text %>
+            
+           </p>
+          </div>
+          </div>
+                
+              </li>
+            <% }) %>
+          </ul>
+        </li>
+      <% }) %>
+    </ul>
+    
+</div>
+    
+  </div>
+</div>
+
+<%- include('partials/Footer') %>

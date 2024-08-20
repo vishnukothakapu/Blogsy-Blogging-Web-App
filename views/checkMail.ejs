@@ -1,0 +1,17 @@
+<%- include('partials/Header',{search:null,user:null}) %>
+<div class="registerContainer">
+    
+    <form method="post" action="check-mail" class="registerForm">
+        <h2>Forgot password</h2>
+        <p class="forgot-desc">Enter your registered email to reset your password</p>
+          <div class="input-container">
+           <i class="ri-mail-line"></i>
+   <input type="email" name="username" placeholder="Email address" class="login-inputEmail" required>
+        
+         </div>
+
+        <button type="submit">Continue</button>
+        <span class="loginLink">Remember your password? <a href='/login'>Login</a></span>
+    </form>
+</div>
+<%- include('partials/Footer') %>

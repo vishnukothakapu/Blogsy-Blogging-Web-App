@@ -1,0 +1,38 @@
+<%- include('partials/Header') %>
+
+<div>
+    <table>
+        <tr>
+            <th>S.No</th>
+            <th>Id</th>
+            <th>Profile</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Posts</th>
+        </tr>
+        <% if (Array.isArray(users) && users.length > 0) { %>
+            <% users.forEach((user, index) => { %>
+            <tr>
+                <td><%= index + 1 %></td>
+                <td><%= user._id %></td>
+                <td>
+                    <% if (user.image.startsWith('http')) { %>
+                        <img src='<%= user.image %>' width="50" height="50"/>
+                    <% } else { %>
+                        <img src="/uploads/<%= user.image %>" alt="Profile Image" width="50" height="50"/>
+                    <% } %>
+                </td>
+                <td><%= user.name %></td>
+                <td><%= user.username %></td>
+                <td><%= user.posts.length %></td>
+            </tr>
+            <% }) %>
+        <% } else { %>
+            <tr>
+                <td colspan="6">No users found.</td>
+            </tr>
+        <% } %>
+    </table>
+</div>
+
+<%- include('partials/Footer') %>

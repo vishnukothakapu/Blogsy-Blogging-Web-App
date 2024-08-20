@@ -1,0 +1,33 @@
+<%- include('partials/Header',{user:user,search:null}) %>
+<div class="registerContainer">
+     <% if(message!==null) {%>
+        <span class="bg-<%=color%> message"><%=message%></span>
+        <% }%>
+    <form method="post" action="/update-password" class="registerForm">
+        <h2 class="updatePass-header">Update Password</h2>
+        <input type='hidden' value="<%=mail%>" name="username"/>
+          <div class="input-container">
+          <i class="ri-key-line"></i>
+          <input type="password" name="oldPass" placeholder="Old Password"/>
+           
+        
+         </div>
+           <div class="input-container">
+          <i class="ri-lock-2-line"></i>
+          <input type="password" name="password" placeholder="New Password"/>
+          
+ 
+        
+         </div>
+           <div class="input-container">
+          <i class="ri-lock-2-line"></i>
+          <input type="password" name="confirmPassword" placeholder="Confirm Password"/>  
+           
+ 
+        
+         </div>
+           <p class="tip"><i class="ri-lightbulb-flash-line"></i> <span>Stronger = Secure</span></p>
+        <button class="passwordBtn" type="submit">Update</button>
+    </form>
+</div>
+<%- include('partials/Footer') %>

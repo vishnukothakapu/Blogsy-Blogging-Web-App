@@ -1,0 +1,36 @@
+<%- include('partials/Header',{search:null,user:null}) %>
+<div class="registerContainer">
+     <% if(message!==null) {%>
+        <span class="bg-<%=color%> message"><%=message%></span>
+        <% }%>
+        <br>
+    <form action="/login" method="post" class="registerForm">
+        <h1 class="login-headerText">Login</h1>
+         <div class="input-container">
+           <i class="ri-mail-line"></i>
+   <input type="email" name="username" placeholder="Email address" class="login-inputEmail" required>
+        
+         </div>
+         <div class="input-container">
+           <i class="ri-door-lock-line"></i>
+   <input type="password" name="password" placeholder="Password" class="login-inputPassword" required/>
+        
+         </div>
+     
+        <a href='/check-mail' class="login-forgotPass"><span>Forgot Password?</span></a>
+        <button type="submit" class="loginBtn">Login</button>
+        <span class="loginLink">Don't have an account? <a href='/register'>Register</a></span>
+       
+         <span class="text-social">Or sign in with</span>
+
+<div class="googleContainer">
+    <i class="ri-google-fill"></i>
+    <button id="googleBtn"><a href='/auth/google'>Sign in with Google</a></button>
+</div>
+<div class="githubContainer">
+    <i class="ri-github-fill"></i>
+    <button id="githubBtn"><a href='/auth/github'>Sign in with Github</a></button>
+    </form>
+</div>
+</div>
+<%- include('partials/Footer') %>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogsy</title>
+    <link rel="shortcut icon" href="public/uploads/favicon.ico" type="image/x-icon">
+    <!-- Css -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Icons -->
+     <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    <!-- Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar-container">
+        <div class="logo">
+            <a href="/" class="logoText">Blogsy.</a>
+        </div>
+        <div class="search-bar">
+            <form method="get" action="/" class="searchForm">
+                <div class="searchIcon">
+                    <i class="ri-search-line"></i>
+                <input type="search" name="search" placeholder="Search blogs" id="search-input" value="<%= search %>"/>
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="user-profile">
+            
+                    <div class="dropdown">
+                        <button class="dropbtn"><% if (user) { %>
+                <div class="user-info">
+                    <% if (user.image.startsWith('http')) { %>
+                        <img src='<%= user.image %>' class="userImage" />
+                    <% } else { %>
+                        <img src='/uploads/<%= user.image %>' class="userImage"/>
+                    <% } %>
+                    <span><%= user.name %></span><i class="ri-arrow-down-s-line"></i></button>
+                        <div class="dropdown-content">
+                            <a href="/dashboard">Dashboard</a>
+                            <a href="/edit-profile">Edit Profile</a>
+                            <a href="/update-password">Change Password</a>
+                            <a href="/logout">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="auth-buttons">
+   <a href="/login">
+                
+                    <button class="loginBtn">Login</button>
+                </a>
+                <a href="/register">
+                    <button class="registerBtn loginBtn">Register</button>
+                </a>
+                </div>
+             
+            <% } %>
+        </div>
+        <button class="sidebar-toggle">
+            <i class="ri-menu-line"></i>
+        </button>
+    </nav>
+    <aside class="sidebar">
+        <button class="close-btn">&times;</button>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Latest Blogs</a></li>
+            <li><a href="#">About</a></li>
+            <% if (user) { %>
+                <li><a href="/edit-profile">Edit Profile</a></li>
+                <li><a href="/change-password">Change Password</a></li>
+                <li><a href="/logout">Logout</a></li>
+            <% } else { %>
+                <li><a href="/login">Login</a></li>
+            <% } %>
+        </ul>
+    </aside>
+
+    <!-- JS for Dropdown and Sidebar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dropdown functionality
+            const dropdown = document.querySelector('.dropdown');
+            const dropbtn = dropdown.querySelector('.dropbtn');
+            const dropdownContent = dropdown.querySelector('.dropdown-content');
+
+            dropbtn.addEventListener('click', function() {
+                dropdownContent.classList.toggle('show');
+            });
+
+            window.addEventListener('click', function(event) {
+                if (!dropdown.contains(event.target)) {
+                    dropdownContent.classList.remove('show');
+                }
+            });
+
+            // Sidebar functionality
+            const sidebar = document.querySelector('.sidebar');
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+            const closeBtn = document.querySelector('.close-btn');
+
+            function toggleSidebar() {
+                sidebar.classList.toggle('open');
+            }
+
+            sidebarToggle.addEventListener('click', toggleSidebar);
+            closeBtn.addEventListener('click', toggleSidebar);
+
+            document.querySelectorAll('.sidebar ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function() {
+                    sidebar.classList.remove('open');
+                });
+            });
+
+            window.addEventListener('click', function(event) {
+                if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+                    sidebar.classList.remove('open');
+                }
+            });
+        });
+    </script>

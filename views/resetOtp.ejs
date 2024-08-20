@@ -1,0 +1,20 @@
+<%- include('partials/Header',{user:null,search:null}) %>
+<div class="registerContainer">
+     <% if(message!==null) {%>
+        <span class="bg-<%=color%> message"><%=message%></span>
+        <% }%>
+        <br>
+    <div>
+        <form method="post" action="/reset-otp-verify" class="registerForm">
+            <h1>OTP Verification</h1>
+            <p class='bg-<%=color%> otpText'>A One Time Password sent to <span class="mailText"><%=mail%></span></p>
+            <input type="hidden" value="<%=mail%>" name="username"/>
+           <div class="input-container">
+             <i class="ri-lock-password-line"></i>
+            <input type="number" class="input-otp" name="otp" onkeypress="if(this.value.length===4) return false"/>
+           </div>
+            <button class="otpBtn" type="submit">Verify</button>
+        </form>
+    </div>
+</div>
+<%- include('partials/Footer') %>

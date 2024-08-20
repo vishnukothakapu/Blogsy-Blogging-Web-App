@@ -1,0 +1,23 @@
+<%- include('partials/Header',{user:user,search:null}) %>
+<div class="registerContainer">
+    <form action="/edit-profile" method="POST" enctype="multipart/form-data" class="registerForm">
+        <h2>Edit Profile</h2>
+        <img src="uploads/<%=image%>" class="userImage"/>
+          <div class="input-container">
+          <i class="ri-user-line"></i>
+           <input name="name" value="<%=name%>" type="text" id="name"/>
+ 
+        
+         </div>
+     
+       <div class="input-container">
+  <label for="file-upload" class="custom-file-upload">
+    <i class="ri-file-upload-line"></i> Upload Image
+  </label>
+  <input id="file-upload" type="file" name="image" title="Upload image" />
+</div>
+
+        <button type="submit" class="editProfileBtn">Update</button>
+    </form>
+</div>
+<%- include('partials/Footer') %>

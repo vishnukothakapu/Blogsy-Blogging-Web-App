@@ -2,11 +2,11 @@ const express = require("express");
 const PORT = process.env.PORT || 4000;
 const app = express();
 const mongoose = require("mongoose");
-const { Schema } = require('mongoose');
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const fs = require("fs");
 const path = require('path');
+const {MongoClient} = require('mongodb');
 const Blog = require('./models/Blog');
 const session = require("express-session");
 const multer = require("multer");
@@ -32,12 +32,22 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // MONGODB CONNECTION
-mongoose
-  .connect(process.env.MONGO_URL)
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => console.log(err));
+
+
+const uri = process.env.MONGO_URI; // Replace with your Atlas connection string
+
+async function connectToDatabase() {
+  try {
+    await mongoose.connect(uri)
+      .then(() => {
+        console.log('connected to db');
+      })
+  }
+  catch (err) { console.log(err); }
+}
+
+connectToDatabase();
+
 
 // Passport configurations
 passport.use(UserModel.createStrategy());

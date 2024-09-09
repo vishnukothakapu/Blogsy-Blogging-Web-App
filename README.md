@@ -49,8 +49,8 @@ This project is a fully functional blogging platform where users can register, l
 
 # Local Setup 💻
 ## 1. Clone the repository
-`git clone <repository-url`
-`cd <repository-directory>`
++ `git clone <repository-url`
++ `cd <repository-directory>`
 ## 2. Install Dependencies
 ` npm install `
 ## 3. Setup environment variables

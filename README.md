@@ -71,7 +71,3 @@ This project is a fully functional blogging platform where users can register, l
  + Register a new user of login using Google or Github.
  + Explore the features of the web application by posting,editing,liking,commenting and replying the blogs.
    
-# Team Members 👨🏻‍💻
-+ **Kothakapu Vishnu Kiran** - `2023IMG-028`
-+ **Sai Srikar Vollala** - `2023IMG-058`
-+ **K Narain Varma** - `2023IMT-501`

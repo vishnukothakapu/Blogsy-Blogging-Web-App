@@ -17,8 +17,8 @@ body {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 4px 4px rgba(0,0,0,0.2);
-  padding: 10px;
-  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 14px;
+  background-color:#4441bd;
   color: #fff;
   position: relative;
   z-index: 100;
@@ -99,7 +99,6 @@ body {
   color: #fff;
   border: none;
   border-radius: 5px;
-
 }
 .auth-buttons {
   display: flex;
@@ -112,7 +111,6 @@ body {
   height: 40px;
   margin-right: 10px;
 }
-
 .dropdown {
   position: relative;
   display: inline-block;
@@ -135,6 +133,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
 .dropdown-content {
   display: none;
+  color: #fff;
   position: absolute;
   background-color: #252525;
   min-width: 160px;
@@ -164,40 +163,38 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   position: fixed;
   top: 0;
   left: -250px;
-  color: #fff;
   background-color: #333;
   overflow-x: hidden;
-  transition: transform 0.3s ease;
+  transition: left 0.3s ease;
   padding-top: 60px;
-  z-index: 1000;
-  transform: translateX(-100%);
+  z-index: 200;
 }
 
 .sidebar.open {
-  transform: translateX(0);
+  left: 0;
 }
 
 .sidebar ul {
   list-style: none;
-  padding: 0;
-  color: #fff;
+  padding: 20px;
   margin: 0;
 }
 
 .sidebar ul li {
-  padding: 10px;
-  color: #fff;
+  padding: 12 20px;
 }
 
 .sidebar ul li a {
-  color: #fff;
+  font-size: 18px;
   text-decoration: none;
+  padding: 10px;
+  color: #fff;
   display: block;
+  transition: color 0.3s ease;
 }
 
 .sidebar ul li a:hover {
-  background-color: #575757;
-  color: #fff;
+  color: #4414b4;
 }
 
 .sidebar .close-btn {
@@ -213,7 +210,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
 /* Sidebar toggle button */
 .sidebar-toggle {
-  display: none;
+  display:none;
   font-size: 24px;
   background: none;
   border: none;
@@ -237,6 +234,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
   .sidebar {
     width: 100%;
+    left: -100%;
   }
 }
 
@@ -251,7 +249,6 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   height: 100vh;
   background-color: #e5e5f7;
 opacity: 0.8;
-background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
 background-size: 10px 10px;
 }
 .message {
@@ -308,7 +305,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
  }
  .dashboard-headers button {
   padding: 12px 14px;
-   background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+   background-color: #4441bd;
   color: #fff;
   border-radius: 5px;
   display: flex;
@@ -386,8 +383,8 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     border-radius: 5px;
 }
 .custom-file-upload:hover   {
-  border-color: #3a0ca3;
-  color: #3a0ca3;
+  border-color: #4441bd;
+  color: #4441bd;
 }
 .registerForm textarea,.editBlogForm textarea {
   padding-top: 30px;
@@ -407,7 +404,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .registerContainer input:active,
 .registerContainer input:hover {
-  border: 1px solid #3a0ca3;
+  border: 1px solid #4441bd;
 }
 .registerContainer input[type="file"] {
   border: none;
@@ -416,7 +413,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .registerContainer button {
   padding: 8px 12px;
-  background-color: #3a0ca3;
+  background-color: #4441bd;
   border: none;
   font-size: 18px;
   width: 100%;
@@ -439,7 +436,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .loginLink a {
   text-decoration: none;
-  color: #3a0ca3;
+  color: #4441bd;
 }
 .registerForm #googleBtn a,
 #githubBtn a {
@@ -473,6 +470,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .post-blogBtn {
     margin-top: 8px;
+    background-color: #4441bd;
 }
 .text-social {
   text-align: center;
@@ -510,7 +508,6 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   justify-content: center;
    background-color: #e5e5f7;
 opacity: 0.8;
-background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
 background-size: 10px 10px;
   width: 100%;
   align-items: center;
@@ -520,7 +517,6 @@ background-size: 10px 10px;
   background-color: #e5e5f7;
 opacity: 0.8;
 padding: 10px;
-background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
 background-size: 10px 10px;
 height: auto;
   
@@ -586,7 +582,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .blog-post .blog-author {
   margin: 15px 0;
-  color: #3a0ca3;
+  color:#4441bd;
   font-weight: bold;
 }
 .blog-post .blog-date {
@@ -622,7 +618,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   color: #ed1d24;
 }
 .registerForm .mail {
-  color: #3a0ca3;
+  color: #4441bd;
 }
 .otpForm .otp-desc {
   text-align: center;
@@ -634,14 +630,14 @@ input::-webkit-outer-spin-button {
 
 .otpBtn {
   margin-top: 6px;
-    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+   background-color:#4441bd;
 }
 .otpText {
   letter-spacing: 1.2px;
   text-align: center;
 }
 .mailText {
-  color: #3a0ca3;
+  color: #4441bd;
 }
 .registerContainer .tip {
   text-align: right;
@@ -683,7 +679,7 @@ input::-webkit-outer-spin-button {
  margin: 10px 0;
 }
 .blogPost-author {
-  color: #3a0ca3;
+  color: #4441bd;
   font-weight: 500;
   margin: 6px 0;
 }
@@ -746,7 +742,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .addCommentSection-form button {
   padding: 12px 14px;
-  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+ background-color:#4441bd;
   color: #fff;
   font-family: 'Outfit',sans-serif;
   font-size: .85rem;
@@ -755,7 +751,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   border: none;
 }
 .author-tag {
-   background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-color:#4441bd;
    color: #f5f5f5;
    border-radius: 5px;
    padding: 3px;
@@ -772,7 +768,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
    font-family: 'Outfit',sans-serif;
 }
 .replyComment {
-  color: #3a0ca3;
+  color: #4441bd;
   font-weight: bold;
 }
 .replyCommentForm {
@@ -787,14 +783,14 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .replyCommentForm button {
   padding: 12px 14px;
-  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+ background-color:#4441bd;
   color: #fff;
    font-family: 'Outfit',sans-serif;
   cursor: pointer;
   border: none;
 }
 .footer {
-  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+ background-color:#4441bd;
   color: #fff;
   text-align: center;
   padding:10px;
@@ -829,11 +825,11 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   color:#fff;
 }
 .buttons-footer .editBlog-btn {
- background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+background-color:#4441bd;
   color: #f5f5f5;
 }
 .buttons-footer .viewBtn {
-  color: #3a0ca3;
-  border: 1px solid #3a0ca3;
+  color: #4441bd;
+  border: 1px solid #4441bd;
   background-color: #e5e5f7;
 }
